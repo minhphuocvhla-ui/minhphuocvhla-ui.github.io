@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STS6000W — Home Energy Controller</title>
+<meta name="description" content="STS6000W: home energy controller that manages grid, solar, battery, inverter and generator automatically, with remote monitoring and an AI assistant.">
+<style>
+  :root{
+    --bg:#f6f7f4; --panel:#ffffff; --ink:#16202a; --muted:#5b6670; --line:#dde2da;
+    --accent:#1f7a52; --accent2:#c98a12; --soft:#e8f2ec;
+    --sans:ui-sans-serif,"Segoe UI",Roboto,-apple-system,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#11161b; --panel:#182027; --ink:#e8edf0; --muted:#9aa7b1; --line:#2c3640;
+    --accent:#4cc28a; --accent2:#e6b44a; --soft:#1b2a24;}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{font-weight:700;letter-spacing:.02em}
+  .brand span{color:var(--accent)}
+  .lang{display:flex;gap:6px}
+  .lang button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:16px;padding:3px 12px;cursor:pointer}
+  .lang button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .hero{padding:48px 0 32px;display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center}
+  h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:0 0 14px;letter-spacing:-.01em}
+  .lead{font-size:18px;color:var(--muted);margin:0 0 22px;max-width:52ch}
+  .cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:11px 20px;border-radius:8px;font-weight:600}
+  .hero svg{width:100%;height:auto;display:block}
+  section{padding:36px 0;border-top:1px solid var(--line)}
+  h2{font-size:24px;margin:0 0 6px}
+  .sub{color:var(--muted);margin:0 0 22px;max-width:70ch}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .card h3{margin:0 0 6px;font-size:16px}
+  .card p{margin:0;color:var(--muted);font-size:14.5px}
+  .ai{background:var(--soft);border-radius:14px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .ai ul{margin:0;padding-left:18px;color:var(--muted)}
+  .ai li{margin-bottom:6px}
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .contact a{color:var(--accent)}
+  footer{padding:24px 0 40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+  [data-l="vi"]{display:none}
+  html[lang="vi"] [data-l="en"]{display:none}
+  html[lang="vi"] [data-l="vi"]{display:revert}
+  html[lang="vi"] svg [data-l="vi"]{display:inline}
+  @media (max-width:760px){
+    .hero,.ai,.contact{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr}
+    .hero{padding-top:20px}
+  }
+  .flow text{font:600 13px var(--sans);fill:var(--ink)}
+  .flow .box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+  .flow .core{fill:var(--accent);stroke:none}
+  .flow .core+text{fill:#fff}
+  .flow .ln{stroke:var(--accent2);stroke-width:2.5;fill:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand">STS<span>6000W</span></div>
+  <div class="lang" role="group" aria-label="Language">
+    <button id="b-en" class="on" onclick="setLang('en')">EN</button>
+    <button id="b-vi" onclick="setLang('vi')">VI</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div>
+    <h1 data-l="en">One controller for your home's grid, solar, battery and generator.</h1>
+    <h1 data-l="vi">Một bộ điều khiển cho lưới điện, solar, pin và máy phát trong nhà.</h1>
+    <p class="lead" data-l="en">STS6000W automatically switches power sources, charges the battery safely and keeps the house running through outages — and lets you watch everything from your phone.</p>
+    <p class="lead" data-l="vi">STS6000W tự chuyển nguồn, sạc pin an toàn, giữ nhà có điện khi cúp điện — và cho bạn xem mọi thứ trên điện thoại.</p>
+    <a class="cta" href="#contact" data-l="en">Contact us</a>
+    <a class="cta" href="#contact" data-l="vi">Liên hệ</a>
+  </div>
+  <svg class="flow" viewBox="0 0 420 300" role="img" aria-label="Power flow: grid, solar and generator into the STS6000W controller, which feeds the battery, inverter and home.">
+    <path class="ln" d="M95 50 H170 V130 M95 150 H170 M95 250 H170 V170"/>
+    <path class="ln" d="M250 150 H325 M250 140 V60 H325 M250 160 V240 H325"/>
+    <rect class="box" x="10" y="30" width="85" height="40" rx="8"/><text x="52" y="55" text-anchor="middle" data-l="en">Grid</text><text x="52" y="55" text-anchor="middle" data-l="vi">Lưới điện</text>
+    <rect class="box" x="10" y="130" width="85" height="40" rx="8"/><text x="52" y="155" text-anchor="middle" data-l="en">Solar</text><text x="52" y="155" text-anchor="middle" data-l="vi">Solar</text>
+    <rect class="box" x="10" y="230" width="85" height="40" rx="8"/><text x="52" y="255" text-anchor="middle" data-l="en">Generator</text><text x="52" y="255" text-anchor="middle" data-l="vi">Máy phát</text>
+    <rect class="core" x="170" y="110" width="80" height="80" rx="12"/><text x="210" y="155" text-anchor="middle">STS6000W</text>
+    <rect class="box" x="325" y="40" width="85" height="40" rx="8"/><text x="367" y="65" text-anchor="middle" data-l="en">Battery</text><text x="367" y="65" text-anchor="middle" data-l="vi">Pin</text>
+    <rect class="box" x="325" y="130" width="85" height="40" rx="8"/><text x="367" y="155" text-anchor="middle" data-l="en">Inverter</text><text x="367" y="155" text-anchor="middle" data-l="vi">Inverter</text>
+    <rect class="box" x="325" y="220" width="85" height="40" rx="8"/><text x="367" y="245" text-anchor="middle" data-l="en">Home</text><text x="367" y="245" text-anchor="middle" data-l="vi">Nhà</text>
+  </svg>
+</div>
+
+<section>
+  <h2 data-l="en">What it does</h2><h2 data-l="vi">Làm được gì</h2>
+  <p class="sub" data-l="en">Built on an ESP32-S3 controller with current sensors, relays and contactors, designed for 12–96 V battery systems.</p>
+  <p class="sub" data-l="vi">Bộ điều khiển ESP32-S3 với cảm biến dòng, relay và contactor, dùng cho hệ pin 12–96 V.</p>
+  <div class="grid">
+    <div class="card"><h3 data-l="en">Automatic source switching</h3><h3 data-l="vi">Tự chuyển nguồn</h3>
+      <p data-l="en">Moves the load between grid and inverter, and falls back to the grid if the controller ever fails.</p>
+      <p data-l="vi">Chuyển tải giữa lưới và inverter; nếu bộ điều khiển hỏng vẫn tự bám lưới.</p></div>
+    <div class="card"><h3 data-l="en">Safe battery charging</h3><h3 data-l="vi">Sạc pin an toàn</h3>
+      <p data-l="en">Charges from solar or a grid charger, tracks state of charge and reads Li-ion BMS data.</p>
+      <p data-l="vi">Sạc từ solar hoặc bộ sạc lưới, theo dõi % pin, đọc dữ liệu BMS pin lithium.</p></div>
+    <div class="card"><h3 data-l="en">Solar first</h3><h3 data-l="vi">Ưu tiên solar</h3>
+      <p data-l="en">Uses solar power before battery or grid, with over-voltage protection on the solar input.</p>
+      <p data-l="vi">Dùng điện mặt trời trước pin và lưới, có bảo vệ quá áp đầu vào solar.</p></div>
+    <div class="card"><h3 data-l="en">Generator auto-start</h3><h3 data-l="vi">Tự đề máy phát</h3>
+      <p data-l="en">Starts the generator when the battery is low and the grid is down, and stops it when done.</p>
+      <p data-l="vi">Tự đề máy phát khi pin yếu và mất lưới, tự tắt khi đủ.</p></div>
+    <div class="card"><h3 data-l="en">Fire and smoke cut-off</h3><h3 data-l="vi">Cắt điện khi cháy/khói</h3>
+      <p data-l="en">Flame or smoke detection cuts every power source and sounds the alarm.</p>
+      <p data-l="vi">Phát hiện lửa hoặc khói là cắt mọi nguồn điện và hú còi.</p></div>
+    <div class="card"><h3 data-l="en">Remote monitoring</h3><h3 data-l="vi">Theo dõi từ xa</h3>
+      <p data-l="en">Live power, battery and history on the built-in display, a web app and a mobile app.</p>
+      <p data-l="vi">Xem công suất, pin, lịch sử trên màn hình máy, web app và app điện thoại.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 data-l="en">AI assistant, powered by Claude</h2><h2 data-l="vi">Trợ lý AI chạy bằng Claude</h2>
+  <div class="ai">
+    <p data-l="en" style="margin:0">Each installation has a small on-site server that collects device data and logs. Our AI assistant reads that data to help customers and our technicians.</p>
+    <p data-l="vi" style="margin:0">Mỗi công trình có một máy chủ nhỏ thu dữ liệu và nhật ký thiết bị. Trợ lý AI đọc dữ liệu đó để hỗ trợ khách và kỹ thuật viên.</p>
+    <ul data-l="en">
+      <li>Explains alarms and faults in plain language</li>
+      <li>Answers customer questions through a Telegram chatbot</li>
+      <li>Helps our team develop firmware and hardware</li>
+    </ul>
+    <ul data-l="vi">
+      <li>Giải thích báo lỗi bằng lời dễ hiểu</li>
+      <li>Trả lời khách qua chatbot Telegram</li>
+      <li>Hỗ trợ đội ngũ phát triển firmware và phần cứng</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 data-l="en">Contact</h2><h2 data-l="vi">Liên hệ</h2>
+  <div class="contact">
+    <div class="card">
+      <h3>Vinh Hung Co., Ltd.</h3>
+      <p data-l="en">Ho Chi Minh City, Vietnam</p><p data-l="vi">TP. Hồ Chí Minh, Việt Nam</p>
+    </div>
+    <div class="card">
+      <h3 data-l="en">Email</h3><h3 data-l="vi">Email</h3>
+      <p><a href="mailto:minhlam@vinhhungcoltd.com">minhlam@vinhhungcoltd.com</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="yr">2026</span> Vinh Hung Co., Ltd. · STS6000W</footer>
+</div>
+<script>
+function setLang(l){
+  document.documentElement.lang=l;
+  document.getElementById('b-en').classList.toggle('on',l==='en');
+  document.getElementById('b-vi').classList.toggle('on',l==='vi');
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+try{var s=localStorage.getItem('lang');if(s)setLang(s)}catch(e){}
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
